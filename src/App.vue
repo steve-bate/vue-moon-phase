@@ -10,23 +10,23 @@
     </form>
     <moon-phase-day v-if="phase == 'day'"></moon-phase-day>
     <div class="max-phases">
-      <moon-phase-max v-if="phase == 'phases'"></moon-phase-max>
+      <moon-phases v-if="phase == 'phases'"></moon-phases>
     </div>
-    <moon-phase-month v-if="phase == 'calendar'"></moon-phase-month>
+    <moon-phase-calendar v-if="phase == 'calendar'"></moon-phase-calendar>
   </div>
 </template>
 
 <script>
-import MoonPhaseDay from "./components/MoonPhaseDay";
-import MoonPhaseMax from './components/MoonPhaseMax';
-import MoonPhaseMonth from './components/MoonPhaseMonth';
+import MoonPhaseDay from "./components/MoonPhase/Day";
+import MoonPhases from './components/MoonPhase/PrimaryPhases';
+import MoonPhaseCalendar from './components/MoonPhase/Calendar';
 
 export default {
   name: "App",
   components: {
     MoonPhaseDay,
-    MoonPhaseMax,
-    MoonPhaseMonth,
+    MoonPhases,
+    MoonPhaseCalendar,
   },
   data() {
     return {

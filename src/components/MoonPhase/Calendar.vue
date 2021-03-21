@@ -140,7 +140,7 @@ export default {
   &__daysofweek {
     margin-bottom: .5rem;
   }
-  
+
   &__today {
     box-shadow: inset 0 0 0 1px darkgray;
   }
