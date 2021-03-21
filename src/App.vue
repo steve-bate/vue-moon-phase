@@ -1,19 +1,39 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <form class="selector">
+      <h1>Moon Phase Demonstration</h1>
+      <select id="selector" v-model="phase">
+        <option value="day">Day</option>
+        <option value="phases">Phases</option>
+        <option value="calendar">Calendar</option>
+      </select>
+    </form>
+    <moon-phase-day v-if="phase == 'day'"></moon-phase-day>
+    <div class="max-phases">
+      <moon-phase-max v-if="phase == 'phases'"></moon-phase-max>
+    </div>
+    <moon-phase-month v-if="phase == 'calendar'"></moon-phase-month>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import MoonPhaseDay from "./components/MoonPhaseDay";
+import MoonPhaseMax from './components/MoonPhaseMax';
+import MoonPhaseMonth from './components/MoonPhaseMonth';
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
+    MoonPhaseDay,
+    MoonPhaseMax,
+    MoonPhaseMonth,
+  },
+  data() {
+    return {
+      phase: 'day'
+    }
   }
-}
+};
 </script>
 
 <style lang="scss">
@@ -24,5 +44,13 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.selector {
+  margin: 1rem 0;
+}
+
+.max-phases div {
+  margin: auto;
 }
 </style>
