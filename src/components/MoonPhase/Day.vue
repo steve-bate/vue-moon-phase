@@ -21,8 +21,6 @@
 import { queryMoonPhases } from './api'
 import { moonProps } from './props'
 
-console.log(moonProps)
-
 export default {
   props: {
     ...moonProps,
