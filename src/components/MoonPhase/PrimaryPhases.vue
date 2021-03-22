@@ -40,17 +40,31 @@ export default {
     }
   },
 
+  watch: {
+    date () {
+      this.render();
+    }
+  },
+
+  methods: {
+    render () {
+      var configMoon = {
+          lang: this.lang,
+          month: this.date.getMonth() + 1,
+          year: this.date.getFullYear(),
+          size: this.moonSize,
+          lightColor: this.lightColor,
+          shadeColor: this.shadeColor,
+          texturize: this.texturize,
+      };
+      queryMoonPhases(configMoon)
+        .then(data => (this.moon = data))
+        .catch(error => console.error(error));
+    }
+  },
+
   async mounted() {
-    var configMoon = {
-        lang: this.lang,
-        month: this.date.getMonth() + 1,
-        year: this.date.getFullYear(),
-        size: this.moonSize,
-        lightColor: this.lightColor,
-        shadeColor: this.shadeColor,
-        texturize: this.texturize,
-    };
-    this.moon = await queryMoonPhases(configMoon);
+    this.render();
   },
 };
 </script>
